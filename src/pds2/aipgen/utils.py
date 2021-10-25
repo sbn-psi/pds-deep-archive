@@ -201,6 +201,18 @@ def comprehenddirectory(dn, con):
                             # product collections.
                             if isproductcollection:
                                 _addinterlabelreferencesfromtabfile(lid, vid, filepath, con)
+                        elif os.path.isfile(filepath + ".fz"):
+                            # file may be fpack-compressed post-labeling
+                            con.execute(
+                                "INSERT OR IGNORE INTO label_file_references (lid, vid, filepath) VALUES (?,?,?)",
+                                (lid, vid, filepath.replace("\\", "/") + ".fz"),
+                            )
+                        elif os.path.isfile(filepath + ".gz"):
+                            # file may be gzip-compressed post-labeling
+                            con.execute(
+                                "INSERT OR IGNORE INTO label_file_references (lid, vid, filepath) VALUES (?,?,?)",
+                                (lid, vid, filepath.replace("\\", "/") + ".gz"),
+                            )
                         else:
                             _logger.warning("⚠️ File %s referenced by %s does not exist; ignoring", fn, xmlfile)
 
