@@ -133,7 +133,7 @@ def main():
                 args.site,
                 args.bundle_base_url,
                 chksumstream,
-                args.include_latest_collection_only,
+                not args.include_latest_collection_only,
                 con,
                 ts,
             )
