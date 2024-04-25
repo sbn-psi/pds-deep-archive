@@ -52,8 +52,8 @@ _logger = logging.getLogger(__name__)
 # -----------------
 
 _bufsiz = 512  # Byte buffer
-_xmlcachesize = 2 ** 16  # XML files to cache in memory
-_digestcachesize = 2 ** 16  # Message digests to cache in memory
+_xmlcachesize = 2 ** 8  # XML files to cache in memory
+_digestcachesize = 2 ** 8  # Message digests to cache in memory
 _plinematcher = re.compile(r"^[Pp],\s*([^\s]+)::([^\s]+)")  # Match separate lids and vids in "P/p" lines in .tab files
 
 # Help message for ``--include-latest-collection-only``:
