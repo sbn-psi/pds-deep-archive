@@ -137,7 +137,7 @@ def comprehenddirectory(dn, con):
     In and under the given directory ``dn`` ,look for XML files and their various references to other
     files, populating tables in ``con``.
     """
-    for dirpath, _dirnames, filenames in os.walk(dn):
+    for dirpath, _dirnames, filenames in os.walk(dn, followlinks=True):
         for fn in filenames:
             if fn.lower().endswith(".xml"):
                 xmlfile = os.path.join(dirpath, fn)
